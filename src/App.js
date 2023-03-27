@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './App.css';
+import CalculateCount from './component/CalculateCount';
 
 function App() {
-const[ count,setCount]=useState(0);
+const[count,setCount]=useState(1);
 const[array,setarray]=useState([])
 
   
@@ -12,38 +13,44 @@ const num2= array.map((x) =>x*x  )
 // 
 console.log("hi ji",num2)
 
-function incre()
+function increment(){
+if (count>=0)
   {
   setCount(count+1);
 
   setarray([...array,count])
 }
-function decre()
+}
+function decrement(){
+if(count>0)
   {
   setCount(count-1);
 }
-
+}
 
 
 
   return (
     <div className="App">
-     <button onClick={incre}> +</button>
-     <h3>  increment in{ count}</h3>
-       <button onClick={decre}> - </button>
+     <button onClick={increment}> +</button>
+     <h3> Counter app</h3>
+       <button onClick={decrement}> - </button>
   <div style={{display:"flex",flexDiretion:"row",gap:'10px'}}>
-<div  >< h2> numbers</h2> {array.map((data)=><li> {data}</li>)}
+
+<div>
+<CalculateCount title="Numbers" numArr={array} />
+</div>
+
+<br></br>
+<div>
+<CalculateCount title="Even" numArr={num} />
 </div>
 <br></br>
 <div>
-<h2>  even</h2>{num.map((data)=><li> {data}</li>)} 
-</div>
-<br></br>
-<div>
-<h2>  odd</h2>{num1.map((data)=><li> {data}</li>)} 
+<CalculateCount title="Odd" numArr={num1} />
 </div>
 <div>
-<h2>  sqrt</h2>{num2.map((data)=><li> {data}</li>)} 
+<CalculateCount title="even" numArr={num2} />
 </div>
 </div>
     </div>
