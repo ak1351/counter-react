@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import './App.css';
-import CalculateCount from './component/CalculateCount';
+import ButtonClicked from './component/buttonclicked';
 
 function App() {
-const[count,setCount]=useState(1);
+const[count,setCount]=useState(0);
 const[array,setarray]=useState([])
 
   
-const num= array.filter((x)=> x%2===0)
-const num1= array.filter((x)=> x%2!==0)
-const num2= array.map((x) =>x*x  )
+const evenNumbers= array.filter((x)=> x%2===0)
+const oddNumbers= array.filter((x)=> x%2!==0)
+const SquareNumbers= array.map((x) =>x*x  )
 // 
-console.log("hi ji",num2)
+console.log("hi ji",array)
 
 function increment(){
 if (count>=0)
   {
   setCount(count+1);
 
-  setarray([...array,count])
+  setarray([...array,count+1])
 }
 }
 function decrement(){
@@ -33,24 +33,24 @@ if(count>0)
   return (
     <div className="App">
      <button onClick={increment}> +</button>
-     <h3> Counter app</h3>
+     <h3> Counter app{count}</h3>
        <button onClick={decrement}> - </button>
   <div style={{display:"flex",flexDiretion:"row",gap:'10px'}}>
 
 <div>
-<CalculateCount title="Numbers" numArr={array} />
+<ButtonClicked title="Numbers" list={array} />
 </div>
 
 <br></br>
 <div>
-<CalculateCount title="Even" numArr={num} />
+< ButtonClicked title="EvenNumbers" list={evenNumbers} />
 </div>
 <br></br>
 <div>
-<CalculateCount title="Odd" numArr={num1} />
+<ButtonClicked title="OddNumbers" list={oddNumbers} />
 </div>
 <div>
-<CalculateCount title="even" numArr={num2} />
+<ButtonClicked title="SquareNumbers" list={SquareNumbers} />
 </div>
 </div>
     </div>
@@ -58,3 +58,20 @@ if(count>0)
 }
 
 export default App;
+
+
+// import React, { useState } from 'react';
+
+//  export function Example() {
+//   // Declare a new state variable, which we'll call "count"
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <div>
+//       <p>You clicked {count} times</p>
+//       <button onClick={() => setCount(count + 1)}>
+//         Click me
+//       </button>
+//     </div>
+//   );
+// }
