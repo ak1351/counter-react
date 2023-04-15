@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function buttonclicked({list,title}) {
+export default function listNumbers({list,title}) {
   return (
     <>
     <h2>{title}</h2>
